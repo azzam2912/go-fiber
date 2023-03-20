@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	
 	"github.com/azzam2912/go-fiber/database"
 	"github.com/gofiber/fiber"
 )
@@ -20,6 +21,8 @@ func initDatabase(){
 		panic("Failed to connect to database")
 	}
 	fmt.Println("Database connection successfully opened")
+	database.DBConn.AutoMigrate(&lead.Lead{})
+	fmt.Println("Database Migrated")
 }
 
 func main() {
